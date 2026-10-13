@@ -45,48 +45,24 @@ The table below compares **Battery-QPT** against the domain winners from the ACM
 > [!TIP]
 > **Battery-QPT achieves lower MAPE across heterogeneous Li-ion, commercial LFP, and Zn-ion batteries, with a substantial 49.5% relative error reduction over sequential LSTMs on dendrite-prone Zn-ion coin cells.**
 
-A comprehensive breakdown of all validation scores, ablation studies, and physical consistency metrics is available in **[results.md](results.md)**.
+A detailed breakdown of all validation scores, ablation studies, and physical consistency metrics is available in **[results.md](results.md)**.
 
 ---
 
-## 🏛️ Architecture
+## 🏛️ Method Overview
 
-<p align="center">
-  <img src="figures/fig2_qpt_architecture.png" alt="Battery-QPT Architecture" width="95%"/>
-</p>
-
-*Figure 1: Schematic illustration of the Physics-Informed Quantum-Inspired Transformer (QPT) framework.*
-
----
-
-## 📈 Visualizations & Trajectory Analytics
-
-### EOL Convergence and Parity
-<p align="center">
-  <img src="figures/fig4_degradation_trajectories.png" alt="Degradation Trajectories" width="90%"/>
-</p>
-
-*Figure 2: EOL prediction performance and statistical error convergence analytics on the `MIX_large` test partition.*
-
-### VQC Unitary Entanglement Topologies
-<p align="center">
-  <img src="figures/fig7_entanglement_matrix.png" alt="VQC Entanglement" width="95%"/>
-</p>
-
-*Figure 3: VQC Entanglement analysis across four benchmark datasets: unitary deviation heatmaps $|U - I|$ (top) and circular Virtual Qubit Entanglement Network Graphs (bottom).*
-
-### Latent Aging Manifold Projections
-<p align="center">
-  <img src="figures/fig5_latent_tsne.png" alt="Latent Space Trajectories" width="95%"/>
-</p>
-
-*Figure 4: Latent representation PCA aging trajectory projections across four benchmark datasets.*
+1. **Intra-Cycle Feature Re-Uploading**: Raw voltage, current, and capacity sequences are encoded via continuous harmonic mappings onto virtual Bloch sphere rotations.
+2. **Norm-Preserving Entanglement**: Multi-qubit interactions are mediated through learnable skew-symmetric Cayley parameterizations:
+   $$U = (I - A)(I + A)^{-1}, \quad A^T = -A \implies U^T U = I$$
+   ensuring strict unitarity without numerical state dissipation.
+3. **Temporal Attention Backbone**: Aggregates early-life cycle sequences to track long-term capacity fade trends.
+4. **Thermodynamic Loss Bounds**: Combines prediction error with physical monotonicity, trajectory smoothness, and boundary constraints.
 
 ---
 
 ## 🛠️ Usage
 
-To generate publication figures and reproduction analytics:
+To generate tabular analysis and metrics:
 ```bash
 python main.py
 ```
