@@ -84,6 +84,20 @@ A comprehensive breakdown of all validation scores, ablation studies, and physic
 
 ---
 
+## 🛠️ Usage
+
+To generate publication figures and reproduction analytics:
+```bash
+python main.py
+```
+
+To run model evaluations and compute prognostic metrics:
+```bash
+python evaluate_model.py
+```
+
+---
+
 ## 📌 Citation
 
 If you find this work, benchmark results, or representations useful in your research, please cite our paper:
