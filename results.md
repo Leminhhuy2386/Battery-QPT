@@ -95,3 +95,20 @@ Quantitative clustering and separability comparison on the representation space:
 | :--- | :---: | :---: | :--- |
 | Transformer Baseline | 0.2113 | 2.4981 | Fits discrete early-life cyclic noise clusters |
 | **QPT (Ours)** | **0.1639** | **2.6153** | **Maps smooth, continuous thermodynamic decay manifold** |
+
+---
+
+## 💻 Parameter Footprint & Microcontroller Storage Efficiency
+
+Exact parameter counts and estimated binary footprints:
+
+| Architecture | Parameter Count | Model Size (FP32) | INT8 Quantized Size | Flash / Edge BMS Suitability |
+| :--- | :---: | :---: | :---: | :---: |
+| **Battery-QPT (Standard: $d=64, q=32$)** | **110,753** | **~443 KB** | **~111 KB** | **High (<512 KB STM32/ARM Cortex-M budget)** |
+| **Battery-QPT (Wide: $d=96, q=48$)** | **223,345** | **~893 KB** | **~223 KB** | **High (Embedded automotive BMS)** |
+| Transformer Baseline | 101,377 | ~405 KB | ~101 KB | High |
+| LSTM Baseline | 231,809 | ~927 KB | ~232 KB | High |
+| CPLSTM Benchmark | ~978,300 | ~3.91 MB | ~0.98 MB | Moderate |
+| CPTransformer Benchmark | ~448,600 – 1,048,000 | ~1.79 – 4.19 MB | ~0.45 – 1.05 MB | Moderate |
+| CPMLP Benchmark | ~2,074,000 – 2,173,000 | ~8.30 – 8.69 MB | ~2.07 – 2.17 MB | Low (Large memory footprint) |
+

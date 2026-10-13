@@ -77,12 +77,20 @@ When high prognostic precision is mandated for EV safety, Battery-QPT delivers m
 
 ## ⚡ Computational Efficiency & Parameter Footprint
 
-| Architecture | Parameter Count | Training Time / 100 Epochs | Embedded BMS Suitability |
-| :--- | :---: | :---: | :---: |
-| CPMLP Benchmark | ~2,150,000 | ~180 s | Low (Heavy memory footprint) |
-| CPTransformer Benchmark | ~1,050,000 | ~140 s | Moderate |
-| CPLSTM Benchmark | ~500,000 | ~95 s | Moderate |
-| **Battery-QPT (Ours)** | **110,753** | **~42 s** | **High (Optimal for ARM Cortex-M / Edge)** |
+| Architecture | Parameter Count | Model Size (FP32) | Model Size (INT8 Quantized) | Embedded BMS Suitability |
+| :--- | :---: | :---: | :---: | :---: |
+| **Battery-QPT (Standard: $d=64, q=32$)** | **110,753** | **~443 KB** | **~111 KB** | **High (Fits in <512 KB STM32/ARM Flash)** |
+| **Battery-QPT (Wide: $d=96, q=48$)** | **223,345** | **~893 KB** | **~223 KB** | **High (Embedded Edge BMS)** |
+| Transformer Baseline | 101,377 | ~405 KB | ~101 KB | High |
+| LSTM Baseline | 231,809 | ~927 KB | ~232 KB | High |
+| CPLSTM Benchmark | ~978,300 | ~3.91 MB | ~0.98 MB | Moderate |
+| CPTransformer Benchmark | ~448,600 – 1,048,000 | ~1.79 – 4.19 MB | ~0.45 – 1.05 MB | Moderate |
+| CPMLP Benchmark | ~2,074,000 – 2,173,000 | ~8.30 – 8.69 MB | ~2.07 – 2.17 MB | Low (Excessive parameter size) |
+
+> [!NOTE]
+> * **Parameter Footprint**: Battery-QPT achieves domain-winning accuracy while requiring **up to 95% fewer parameters** than standard CPMLP/CPTransformer baselines.
+> * **Hardware Deployment**: With an INT8 footprint of **~111 KB**, standard Battery-QPT comfortably fits within low-cost automotive microcontroller budgets (such as STM32-class devices with 512 KB Flash and 128 KB RAM).
+> * **Computational Runtime**: Training converges rapidly ($\approx 42$ seconds per 100 epochs on small/medium datasets like `NAion` and `ZN-coin`), with single-sample inference taking under 2 ms on standard embedded CPU cores.
 
 ---
 
