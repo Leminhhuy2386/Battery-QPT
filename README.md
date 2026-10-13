@@ -1,11 +1,11 @@
-# Battery-QPT: Physics-Informed Quantum-Inspired Transformer for Battery State of Health and Remaining Useful Life Prediction
+# Battery-QPT: A Dual-Path Transformer with Periodic Orthogonal Feature Encoding and Trajectory Regularization for Early-Cycle Battery Remaining Useful Life Prediction
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-red.svg)](https://pytorch.org/)
 [![Status](https://img.shields.io/badge/Status-Under%20Review-orange.svg)]()
 
-Welcome to the official repository for **Battery-QPT** (**Q**uantum-Inspired **P**hysics-Informed **T**ransformer), a framework designed for early-life State of Health (SOH) and Remaining Useful Life (RUL) prediction across diverse battery chemistries.
+Welcome to the official repository for **Battery-QPT** (**Dual-Path** Transformer, **Q**uantum-Inspired **P**hysics-Informed **T**ransformer), a framework designed for early-life State of Health (SOH) and Remaining Useful Life (RUL) prediction across diverse battery chemistries.
 
 Battery-QPT bridges quantum-inspired state representations with electrochemical domain knowledge, resolving the persistent trade-off between predictive accuracy and physical consistency.
 
